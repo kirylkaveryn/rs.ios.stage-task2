@@ -6,11 +6,20 @@
     NSInteger count = 0;
     NSInteger length = [array count];
     
-    for (NSInteger i = 0; i < length -1; i++) {
-        for (NSInteger j = i + 1; j < length; j++) {
-            if ([[array objectAtIndex:j]intValue] - [[array objectAtIndex:i]intValue] == [number intValue]) {
-                count ++;
-            }
+    NSInteger i = 0;
+    NSInteger j = 1;
+    
+    while (j <= length - 1) {
+        if (array[j].intValue - array[i].intValue == number.intValue) {
+            count++;
+            j++;
+            i++;
+        }
+        else if (array[j].intValue - array[i].intValue < number.intValue && j != length) {
+            j++;
+        }
+        else if (array[j].intValue - array[i].intValue > number.intValue && j != length) {
+            i++;
         }
     }
     return count;

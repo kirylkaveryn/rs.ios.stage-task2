@@ -6,17 +6,21 @@
     
     NSInteger count = [numbersArray count];
     
+    // check for count of input array
+    if (count > 4) {
+        count = 4;
+    }
+    
     // check for NIL or empty array
     if (numbersArray == nil || count == 0) {
         return @"";
     }
     
-    // boundary condition check
-    for (NSNumber *number in numbersArray) {
-        if (number.intValue > 255) {
+    for (int i = 0; i < count; i++) {
+        if ([numbersArray[i] intValue] > 255) {
             return [NSString stringWithFormat:@"The numbers in the input array can be in the range from 0 to 255."];
         }
-        if (number.intValue < 0) {
+        if ([numbersArray[i] intValue] < 0) {
             return [NSString stringWithFormat:@"Negative numbers are not valid for input."];
         }
     }
